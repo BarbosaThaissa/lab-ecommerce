@@ -1,7 +1,4 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../contexts/ProductContext";
-
-//imgs
+import React, { createContext, Children } from "react";
 import Camisa1 from "../img/camiseta1.png";
 import Camisa2 from "../img/camiseta2.png";
 import Camisa3 from "../img/camiseta3.png";
@@ -13,11 +10,10 @@ import Short3 from "../img/short3.png";
 import Casaco1 from "../img/img9.png";
 import Casaco2 from "../img/img10.png";
 
-//components
-import Product from "../components/Product";
-import Hero from "../components/Hero";
+//create context
+export const ProductContext = createContext();
 
-const Home = () => {
+const ProductProvider = ({ children }) => {
   const products = [
     { id: 1, image: Camisa1, category: "Camisa", title: "title", price: 20.99 },
     { id: 2, image: Camisa2, category: "Camisa", title: "title", price: 5.99 },
@@ -38,19 +34,10 @@ const Home = () => {
   ];
 
   return (
-    <div>
-      <Hero />
-      <section className="py-16">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
-            {products.map((product) => {
-              return <Product product={product} key={product.id} />;
-            })}
-          </div>
-        </div>
-      </section>
-    </div>
+    <ProductContext.Provider value={products}>
+      {children}
+    </ProductContext.Provider>
   );
 };
 
-export default Home;
+export default ProductProvider;

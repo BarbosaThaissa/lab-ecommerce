@@ -7,6 +7,8 @@ import {
   ItensBag,
 } from "./styleds/Header";
 
+import {CartContext } from '../contexts/CartContext'
+
 //icons
 import { BsBag } from "react-icons/bs";
 import { Link } from "react-router-dom";
@@ -42,7 +44,7 @@ const Header = () => {
         <CartStyled onClick={() => setIsOpen(!isOpen)}>
           <BsBag style={bagCart} />
           <ItensBag >
-            {/* {itemAmount} */} 0
+             {/* {itemAmount}  */}
           </ItensBag>
         </CartStyled>
       </HeaderContainer>
