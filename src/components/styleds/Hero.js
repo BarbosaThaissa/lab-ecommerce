@@ -13,7 +13,8 @@ export const Section = styled.section`
 
 export const ContainerHero = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  width: 100%;
   height: 100%;
   margin: 0 auto;
 `

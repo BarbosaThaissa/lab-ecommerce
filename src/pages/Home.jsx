@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { ProductContext } from "../contexts/ProductContext";
+import React from "react";
+import { HomeSection, DivHome, GridHome } from "../GlobalStyle";
 
 //imgs
-import Camisa1 from "../img/camiseta1.png";
 import Camisa2 from "../img/camiseta2.png";
 import Camisa3 from "../img/camiseta3.png";
 import Camisa4 from "../img/camiseta4.png";
@@ -19,20 +18,67 @@ import Hero from "../components/Hero";
 
 const Home = () => {
   const products = [
-    { id: 1, image: Camisa1, category: "Camisa", title: "title", price: 20.99 },
-    { id: 2, image: Camisa2, category: "Camisa", title: "title", price: 5.99 },
-    { id: 3, image: Camisa3, category: "Camisa", title: "title", price: 50.89 },
-    { id: 4, image: Casaco1, category: "Camisa", title: "title", price: 100.5 },
-    { id: 5, image: Casaco2, category: "camisa", title: "title", price: 90.99 },
-    { id: 6, image: Short1, category: "Short", title: "title", price: 25.98 },
-    { id: 7, image: Camisa4, category: "Short", title: "title", price: 40.0 },
-    { id: 8, image: Camisa5, category: "Short", title: "title", price: 60.84 },
-    { id: 9, image: Short2, category: "Moleton", title: "title", price: 85.36 },
+    {
+      id: 2,
+      image: Camisa2,
+      category: "Camisa",
+      title: "Camiseta Astronauta jogando Basquete ",
+      price: 5.99,
+    },
+    {
+      id: 3,
+      image: Camisa3,
+      category: "Camisa",
+      title: "Camiseta Gato na Lua lendo",
+      price: 50.89,
+    },
+    {
+      id: 4,
+      image: Casaco1,
+      category: "Moletom",
+      title: "Moletom Astronauta Cerveja ",
+      price: 100.5,
+    },
+    {
+      id: 5,
+      image: Casaco2,
+      category: "Camisa",
+      title: "Camiseta Baby Look Astronauta Espaço",
+      price: 90.99,
+    },
+    {
+      id: 6,
+      image: Short1,
+      category: "Short",
+      title: "Short foguete e planetas",
+      price: 25.98,
+    },
+    {
+      id: 7,
+      image: Camisa4,
+      category: "Camisa",
+      title: "Camiseta trippy astronauta",
+      price: 40.0,
+    },
+    {
+      id: 8,
+      image: Camisa5,
+      category: "Camisa",
+      title: "Camiseta Game Of Science",
+      price: 60.84,
+    },
+    {
+      id: 9,
+      image: Short2,
+      category: "Short",
+      title: "Short espaço ET ",
+      price: 85.36,
+    },
     {
       id: 10,
       image: Short3,
-      category: "Moleton",
-      title: "title",
+      category: "Short",
+      title: "Short espaço Among Us",
       price: 200.5,
     },
   ];
@@ -40,15 +86,15 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      <section className="py-16">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[30px] max-w-sm mx-auto md:max-w-none md:mx-0">
+      <HomeSection>
+        <DivHome>
+          <GridHome>
             {products.map((product) => {
               return <Product product={product} key={product.id} />;
             })}
-          </div>
-        </div>
-      </section>
+          </GridHome>
+        </DivHome>
+      </HomeSection>
     </div>
   );
 };

@@ -1,8 +1,10 @@
 import React, { createContext, useState, useEffect } from "react";
+import Sidebar from '../components/Sidebar'
+import CartItem from '../components/CartItem'
 
 export const CartContext = createContext();
 
-const CartProvider = ({ children }) => {
+const CartProvider = () => {
   const [cart, setCart] = useState([]);
 
   const [itemAmount, setItemAmount] = useState(0);
@@ -90,7 +92,7 @@ const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider
+    <div
       value={{
         cart,
         addToCart,
@@ -102,8 +104,29 @@ const CartProvider = ({ children }) => {
         total,
       }}
     >
-      {children}
-    </CartContext.Provider>
+
+      <CartItem 
+        cart={cart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        clearCart={clearCart}
+        increaseAmount={increaseAmount}
+        decreaseAmount={decreaseAmount}
+        itemAmount={itemAmount}
+        total={total}
+      />
+      <Sidebar 
+        cart={cart}
+        addToCart={addToCart}
+        removeFromCart={removeFromCart}
+        clearCart={clearCart}
+        increaseAmount={increaseAmount}
+        decreaseAmount={decreaseAmount}
+        itemAmount={itemAmount}
+        total={total}
+      />
+      
+    </div>
   );
 };
 
