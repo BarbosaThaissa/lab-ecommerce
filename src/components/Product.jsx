@@ -14,8 +14,6 @@ import {
 import { Link } from "react-router-dom";
 import { BsPlus, BsEyeFill } from "react-icons/bs";
 
-
-
 const btnPlus = {
   "font-size": "1.5rem",
 };
@@ -31,9 +29,7 @@ const linkProduct = {
   "box-shadow": "rgba(0, 0, 0, 0.24) 0px 3px 8px",
 };
 
-const Product = ({product}) => {
-  console.log("produtos");
-  
+const Product = ({ product }) => {
   const { id, image, category, title, price } = product;
 
   //const { addToCart } = props;
@@ -49,7 +45,8 @@ const Product = ({product}) => {
         </DivImgProduct>
         {/* buttons */}
         <DivButtons>
-          {/*  onClick={addToCart(product, id)} */} <button>
+          {/*  onClick={addToCart(product, id)} */}{" "}
+          <button>
             <ButtonPlus>
               <BsPlus style={btnPlus} />
             </ButtonPlus>
