@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { CartContext } from "../contexts/CartContext";
 import {
   ContainerProduct,
   DivImgProduct,
@@ -30,23 +31,26 @@ const linkProduct = {
 };
 
 const Product = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
+
   const { id, image, category, title, price } = product;
 
-  //const { addToCart } = props;
 
   return (
     <div>
       <ContainerProduct>
         <DivImgProduct>
+
           {/* image */}
           <DivImg>
             <ImgProduct src={image} alt="product image" />
           </DivImg>
         </DivImgProduct>
+
         {/* buttons */}
         <DivButtons>
-          {/*  onClick={addToCart(product, id)} */}{" "}
-          <button>
+          
+          <button  onClick={() => addToCart(product, id)}>
             <ButtonPlus>
               <BsPlus style={btnPlus} />
             </ButtonPlus>
@@ -56,6 +60,7 @@ const Product = ({ product }) => {
           </Link>
         </DivButtons>
       </ContainerProduct>
+
       {/* categoria, titulo e preco */}
       <div>
         <Category>{category}</Category>
