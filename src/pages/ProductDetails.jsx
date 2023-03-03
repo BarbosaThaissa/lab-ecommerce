@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { CartContext } from "../contexts/CartContext";
 import {
   SectionLoading,
   ContainerDetails,
@@ -26,6 +27,7 @@ import Casaco2 from "../img/img10.png";
 const ProductDetails = () => {
   //get product id from url
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
   const products = [
     {
       id: 2,
@@ -122,25 +124,18 @@ const ProductDetails = () => {
   const { title, price, description, image } = product;
 
   return (
-    <ContainerDetails className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
-      <SectionDetails className="flex flex-col lg:flex-row items-center">
+    <ContainerDetails>
+      <SectionDetails>
         {/* image */}
-        <DivImgDet className="flex flex-1 justify-center items-center mb-8 lg:max-w-sm">
-          <ImgDetail className="max-w-[200px] lg:max-w-sm" src={image} alt="" />
+        <DivImgDet>
+          <ImgDetail src={image} alt="" />
         </DivImgDet>
         {/* text */}
-        <DivTexts className="flex-1 text-center lg:text-left">
-          <H1Deta className="text-[26px] font-medium mb-2 max-w-[450px] mx-auto lg:mx-0">
-            {title}
-          </H1Deta>
-          <PriceDeta className="text-xl text-red-500 font-medium mb-6">
-            $ {price}
-          </PriceDeta>
-          <p className="mb-8">{description}</p>
-          <ButtonAdd
-            // onClick={() => addToCart(product, product.id)}
-            className="bg-primary py-4 px-8 text-white"
-          >
+        <DivTexts>
+          <H1Deta>{title}</H1Deta>
+          <PriceDeta>$ {price}</PriceDeta>
+          <p>{description}</p>
+          <ButtonAdd onClick={() => addToCart(product, product.id)}>
             Add to card
           </ButtonAdd>
         </DivTexts>

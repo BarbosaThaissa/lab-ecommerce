@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const HeaderActive = styled.header`
-  background-color: transparent;
-  padding: 0.8rem 0;
+  background-color: ${(props) =>
+    props.ativo === true ? "transparent" : "white"};
+  padding: ${(props) => (props.ativo === true ? "1rem 0" : "0.8rem 0")};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   position: fixed;
   width: 100%;
@@ -42,4 +43,3 @@ export const ItensBag = styled.div`
   bottom: -0.5rem;
   right: -0.5rem;
 `;
-

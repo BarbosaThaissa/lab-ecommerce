@@ -47,6 +47,11 @@ export const ButtonPlus = styled.div`
   background-color: #e63946;
   color: rgb(255, 255, 255);
   cursor: pointer;
+  transition: 0.3s;
+
+  &:hover {
+    background-color: pink;
+  }
 `;
 
 export const Category = styled.div`
