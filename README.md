@@ -16,7 +16,7 @@
 <p aling="center">
  <img alt="photo project" src="./src/assets/bagfoto.png" width="100%">
  <img alt="photo project" src="./src/assets/produtosfoto.png" width="100%">
- <img alt="photo project" src="./src/assets/detalhesfoto.png   " width="100%">
+ <img alt="photo project" src="./src/assets/detalhesfoto.png" width="100%">
 </p>
 
 <p><img src="./src/assets/rainbow-readme.png" alt="-----------------------------------------------------" /></p>
