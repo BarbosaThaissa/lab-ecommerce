@@ -25,7 +25,7 @@
 
 ## 💻 Project
 
-Live preview: https://mycvcreator.netlify.app/
+Live preview: https://labecommercer.netlify.app/
 
 This application has:
 
