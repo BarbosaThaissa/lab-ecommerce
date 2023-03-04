@@ -27,6 +27,21 @@ const CartProvider = ({ children }) => {
     }
   }, [cart]);
 
+  // carregar itens do carrinho do localStorage quando o componente for montado
+  useEffect(() => {
+    const cartJSON = localStorage.getItem("cart");
+    const myCart = JSON.parse(cartJSON);
+    if (myCart) {
+      setCart(myCart);
+    }
+  }, []);
+
+  // atualizar localStorage sempre que os itens do carrinho mudarem
+  useEffect(() => {
+    const cartJSON = JSON.stringify(cart);
+    localStorage.setItem("cart", cartJSON);
+  }, [cart]);
+
   const addToCart = (product, id) => {
     const newItem = { ...product, amount: 1 };
     //verificando se o item ja estar no cart
