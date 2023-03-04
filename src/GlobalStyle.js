@@ -157,3 +157,42 @@ export const ButtonAdd = styled.button`
     background-color: #444;
   }
 `;
+
+
+export const DivOrderna = styled.div`
+  margin-bottom: 1rem;
+  text-align: end;
+
+  & > label > select {
+    margin-left: 3px;
+    border: 2px solid #ffc2d1;
+    border-radius: 5px; 
+  }
+
+  & > label > select:hover {
+    cursor: pointer;
+  }
+`
+
+export const DivFiltros = styled.div`
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  
+
+  & > label > input {
+    margin-left: 3px;
+    border: 2px solid #ffc2d1;
+    border-radius: 5px; 
+    padding-left: 3px;
+  }
+
+  @media (max-width: 450px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+`
+
+export const InputFilter = styled.input`
+  width: 60px;
+`

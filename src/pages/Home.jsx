@@ -1,5 +1,5 @@
-import React from "react";
-import { HomeSection, DivHome, GridHome } from "../GlobalStyle";
+import React, { useState } from "react";
+import { HomeSection, DivHome, GridHome, DivOrderna, DivFiltros, InputFilter } from "../GlobalStyle";
 
 //imgs
 import Camisa2 from "../img/camiseta2.png";
@@ -17,6 +17,13 @@ import Product from "../components/Product";
 import Hero from "../components/Hero";
 
 const Home = () => {
+  // "asc" para ordenação crescente, "desc" para ordenação decrescente
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [nameFilter, setNameFilter] = useState("");
+  const [minimumValue, setMinimumValue] = useState(2);
+  const [maximumValue, setMaximumValue] = useState(3000);
+
+  //produtos
   const products = [
     {
       id: 2,
@@ -83,13 +90,79 @@ const Home = () => {
     },
   ];
 
+  //filtrando os produtos
+  const filterItems = () => {
+    return sortedItems.filter((item) => {
+      return (
+        item.price >= minimumValue &&
+        item.price <= maximumValue &&
+        item.title.toLowerCase().includes(nameFilter.toLowerCase())
+      );
+    });
+  };
+
+  const sortedItems = products.sort((a, b) => {
+    if (sortOrder === "asc") {
+      return a.price - b.price;
+    } else {
+      return b.price - a.price;
+    }
+  });
+
+  //funcões changes
+  const handleSortOrderChange = (event) => {
+    setSortOrder(event.target.value);
+  };
+
   return (
     <div>
       <Hero />
       <HomeSection>
         <DivHome>
+          {/* filtros */}
+          <div>
+            <DivFiltros>
+              <label>
+                Valor mínimo:
+                <InputFilter
+                  type="number"
+                  value={minimumValue}
+                  onChange={(e) => setMinimumValue(e.target.value)}
+                  placeholder="20"
+                />
+              </label>
+              <label>
+                Valor máximo:
+                <InputFilter
+                  type="number"
+                  value={maximumValue}
+                  onChange={(e) => setMaximumValue(e.target.value)}
+                  placeholder="200"
+                />
+              </label>
+
+              <label htmlFor="buscar">
+                Buscar:
+                <input
+                  type="text"
+                  value={nameFilter}
+                  placeholder="Camiseta, short..."
+                  onChange={(e) => setNameFilter(e.target.value)}
+                />
+              </label>
+            </DivFiltros>
+            <DivOrderna>
+              <label>
+                Ordenar por preço:
+                <select value={sortOrder} onChange={handleSortOrderChange}>
+                  <option value="asc">Crescente</option>
+                  <option value="desc">Decrescente</option>
+                </select>
+              </label>
+            </DivOrderna>
+          </div>
           <GridHome>
-            {products.map((product) => {
+            {filterItems().map((product) => {
               return <Product product={product} key={product.id} />;
             })}
           </GridHome>
